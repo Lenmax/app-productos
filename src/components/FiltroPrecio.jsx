@@ -1,6 +1,6 @@
 import { useFiltrosContext } from '../../context/filtros.context';
-
 import styles from '../../style/FiltroPrecio.module.css';
+
 const FiltroPrecio = () => {
 	const { minimoPrecio, setminimoPrecio, maximoPrecio, setmaximoPrecio } =
 		useFiltrosContext();
@@ -9,7 +9,7 @@ const FiltroPrecio = () => {
 			<h3>Filtro por Precio</h3>
 			<label htmlFor='inpDesde'>Desde: </label>
 			<input
-				style={{ width: '100%', height: '100%', fontSize: '1rem' }}
+				style={{}}
 				placeholder='desde'
 				id='inpDesde'
 				type={'number'}

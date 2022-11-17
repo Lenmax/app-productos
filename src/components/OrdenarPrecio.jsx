@@ -1,11 +1,12 @@
 import { useFiltrosContext } from '../../context/filtros.context';
+import styles from '../../style/OrdenarPrecio.module.css';
 const OrdenarPrecio = () => {
 	const { ordenPrecioDecendente, setordenPrecioDecendente } =
 		useFiltrosContext();
 	return (
-		<div>
+		<div className={`${styles.container}`}>
 			<button
-				style={{}}
+				className={`${styles.btnOrdenar}`}
 				onClick={() => setordenPrecioDecendente(!ordenPrecioDecendente)}
 			>
 				Ordenar por Precios mas {ordenPrecioDecendente ? 'alto' : 'bajo'}

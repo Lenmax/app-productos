@@ -1,20 +1,23 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
-const listaProductos = [];
-for (let index = 0; index < 35; index++) {
-	listaProductos.push({
-		codigo: index + 1,
-		descripcion: `Producto${index + 1}`,
-		marca: `Producto${index + 1}`,
-		precio: Math.random().toFixed(2) * 999,
-		imagen:
-			'https://realplaza.vteximg.com.br/arquivos/ids/16502762/image-eb2760b63bcf49e882bbb64ec4888252.jpg?v=637540366718200000',
-	});
-}
+const datosPruebaLocal = () => {
+	const listaProductos = [];
+	for (let index = 0; index < 35; index++) {
+		listaProductos.push({
+			codigo: index + 1,
+			descripcion: `Producto${index + 1}`,
+			marca: `Producto${index + 1}`,
+			precio: Math.random().toFixed(2) * 999,
+			imagen: 'img_aplicacion_sin_imagen.jpg',
+		});
+	}
+	return listaProductos;
+};
 
 export const FiltrosContext = createContext();
 
 export const FiltrosProvider = ({ children }) => {
+	const [listaProductos, setlistaProductos] = useState([]);
 	const [minimoPrecio, setminimoPrecio] = useState(0);
 	const [maximoPrecio, setmaximoPrecio] = useState(9999);
 	const [ordenPrecioDecendente, setordenPrecioDecendente] = useState(true);
@@ -32,7 +35,23 @@ export const FiltrosProvider = ({ children }) => {
 		.filter(
 			(item) => item.precio >= minimoPrecio && item.precio <= maximoPrecio
 		);
-	console.log(filtoProductos.length);
+	useEffect(() => {
+		const fetchPosts = async () => {
+			try {
+				const res = await fetch('http://localhost:5178/api/Productos');
+				console.log(res);
+				if (res.ok) {
+					const data = await res.json();
+					setlistaProductos(data);
+				}
+				setlistaProductos(datosPruebaLocal());
+			} catch (error) {
+				setlistaProductos(datosPruebaLocal());
+			}
+		};
+		fetchPosts();
+	}, []);
+
 	return (
 		<FiltrosContext.Provider
 			value={{

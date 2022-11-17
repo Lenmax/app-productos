@@ -1,0 +1,21 @@
+.container {
+	width: 100%;
+	padding: 0.5rem 0rem;
+}
+
+.btnOrdenar {
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #6b7280;
+	color: #374151;
+	cursor: default;
+	text-decoration: none;
+	background-color: #fff;
+}
+
+.btnOrdenar:hover {
+	color: #fff;
+	cursor: default;
+	text-decoration: none;
+	background-color: #6b7280;
+}

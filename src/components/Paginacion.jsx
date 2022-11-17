@@ -1,4 +1,5 @@
 import { useFiltrosContext } from '../../context/filtros.context';
+import styles from '../../style/Paginacion.module.css';
 
 const Paginacion = () => {
 	const { filtoProductos, productosPorPagina, actualizarPagina } =
@@ -12,19 +13,23 @@ const Paginacion = () => {
 		nroPagina.push(i);
 	}
 	return (
-		<div>
-			<nav>
-				<ul>
+		<>
+			<nav className={`${styles.container}`}>
+				<ul className={`${styles.paginacionBotones}`}>
 					{nroPagina.map((number) => (
 						<li key={number}>
-							<a onClick={() => actualizarPagina(number)} href='#'>
+							<a
+								className={`${styles.paginationBoton}`}
+								onClick={() => actualizarPagina(number)}
+								href='#'
+							>
 								{number}
 							</a>
 						</li>
 					))}
 				</ul>
 			</nav>
-		</div>
+		</>
 	);
 };
 

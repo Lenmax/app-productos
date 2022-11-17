@@ -1,0 +1,29 @@
+.container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.paginacionBotones {
+	width: 80%;
+	height: 40px;
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.paginationBoton {
+	padding: 10px;
+	margin: 8px;
+	border-radius: 5px;
+	border: 1px solid #3b82f6;
+	color: #3b82f6;
+	cursor: pointer;
+	background-color: #fff;
+	text-decoration: none;
+}
+.paginationBoton:hover {
+	color: #fff;
+	background-color: #3b82f6;
+}
